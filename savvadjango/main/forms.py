@@ -1,5 +1,5 @@
 from .models import Task
-from django.forms import ModelForm, TextInput, Textarea
+from django.forms import ModelForm, TextInput, Textarea, Form, CharField, EmailField, PasswordInput
 
 
 class TaskForm(ModelForm):
@@ -16,3 +16,13 @@ class TaskForm(ModelForm):
                 'placeholder': 'Enter the description'
             }),
         }
+
+class LoginForm(Form):
+    username = CharField(label='Username')
+    password = CharField(label="Password", widget=PasswordInput)
+
+
+class RegisterForm(Form):
+    username = CharField(label='Username')
+    email = EmailField(label='Email')
+    password = CharField(label="Password", widget=PasswordInput)
